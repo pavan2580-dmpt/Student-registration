@@ -100,9 +100,9 @@ function Form() {
 
   return (
     <>
-      <div className="Form-page-parent-container w-full min-h-[100vh] max-h-auto bg-gray-300 flex justify-center items-center">
+      <div className="Form-page-parent-container w-full min-h-[100vh] max-h-auto bg-gray-300 flex justify-center items-center mt-5">
         <div className="Form_page_from_container w-[100%] h-[auto] bg-white p-5 lg:p-10 md:w-[90%] lg:w-[70%] rounded-2xl mt-10">
-          <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
             {!Details ?
             (<p className='text-xl text-red-500'>Register here</p>):
             (<p className='text-xl text-red-500'>Update your data :</p>)
