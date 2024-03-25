@@ -11,12 +11,17 @@ function FinalPage() {
   }, []);
 
   return (
-    <div className="w-f h-[100vh] flex justify-center items-center">
+    <div className="w-f h-[100vh] flex justify-center items-center flex-col">
       <h1 className="text-2xl">
         <p className=" text-red-500">{val?.name}</p> your Resposne is submited
       </h1>
       <Link to={"/"}>
-        <button>Back to Home</button>
+        <button
+          className="text-blue-500 border-2 border-blue-400 p-2
+             hover:bg-blue-400  hover:text-white w-full mt-8"
+        >
+          Back to Home
+        </button>
       </Link>
     </div>
   );
