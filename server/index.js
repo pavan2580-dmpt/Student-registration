@@ -9,8 +9,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
-    origin:
-      "https://collage-test-project-6chv-g6un64p6c-pavan2580-dmpts-projects.vercel.app",
+    origin: "https://collage-test-project-6chv.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
