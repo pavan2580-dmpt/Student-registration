@@ -64,7 +64,7 @@ function Form() {
     setLoaderShow(true)
     try {
       if(isNewUser){
-        const response = await axios.post("http://localhost:3000/AddStudentInfo",{
+        const response = await axios.post("https://student-registration-ashen.vercel.app/AddStudentInfo",{
           email:data.email,
           fatherName:data.fatherName,
           fullName:data.fullName,
@@ -77,7 +77,7 @@ function Form() {
         }
       }
       else{
-        const Resp = await axios.put("http://localhost:3000/updateTheInfo",{
+        const Resp = await axios.put("https://student-registration-ashen.vercel.app/updateTheInfo",{
           email:data.email,
           fatherName:data.fatherName,
           fullName:data.fullName,
