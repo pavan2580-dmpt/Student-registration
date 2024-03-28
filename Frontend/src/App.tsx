@@ -8,11 +8,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-          <Nav/>
+        <Nav />
         <Routes>
           <Route path="/" element={<Page />} />
           <Route path="/student_details/:register" element={<From />} />
           <Route path="/Response" element={<FinalPage />} />
+          <Route path="*" element={<Page />} />
         </Routes>
       </BrowserRouter>
     </>

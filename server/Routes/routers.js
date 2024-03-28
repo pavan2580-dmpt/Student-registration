@@ -16,15 +16,25 @@ router.route("/getUserInfo/:Reg").get(async (req, res) => {
 // addeds the student to the database
 router.route("/AddStudentInfo").post(async (req, res) => {
   try {
-    const { fullName, registerNo, phoneNumber, email, fatherName, motherName } =
-      req.body;
+    const {
+      fullName,
+      registerNo,
+      phoneNumber,
+      email,
+      fatherName,
+      motherName,
+      gender,
+      Department,
+    } = req.body;
     if (
       !fullName ||
       !registerNo ||
       !phoneNumber ||
       !email ||
       !fatherName ||
-      !motherName
+      !motherName ||
+      !gender ||
+      !Department
     ) {
       res.status(400).send("missing data");
     } else {
@@ -39,6 +49,8 @@ router.route("/AddStudentInfo").post(async (req, res) => {
           email: email,
           fatherName: fatherName,
           motherName: motherName,
+          gender: gender,
+          department: Department,
         });
         res.send(Response);
       }
@@ -53,15 +65,25 @@ router.route("/AddStudentInfo").post(async (req, res) => {
 // update the student data
 router.route("/updateTheInfo").put(async (req, res) => {
   try {
-    const { email, fatherName, fullName, motherName, phoneNumber, registerNo } =
-      req.body;
+    const {
+      email,
+      fatherName,
+      fullName,
+      motherName,
+      phoneNumber,
+      registerNo,
+      gender,
+      Department,
+    } = req.body;
     if (
       !fullName ||
       !registerNo ||
       !phoneNumber ||
       !email ||
       !fatherName ||
-      !motherName
+      !motherName ||
+      !gender ||
+      !Department
     ) {
       res.status(400).send(req.body);
     } else {
@@ -78,6 +100,8 @@ router.route("/updateTheInfo").put(async (req, res) => {
               phoneNo: phoneNumber,
               fatherName: fatherName,
               motherName: motherName,
+              gender: gender,
+              department: Department,
             },
           },
           { new: true }

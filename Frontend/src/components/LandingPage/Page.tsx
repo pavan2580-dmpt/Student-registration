@@ -4,7 +4,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 function Page() {
   const [Reg, SetReg] = useState<string>("");
   const navigate = useNavigate();
