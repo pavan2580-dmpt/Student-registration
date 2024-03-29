@@ -14,6 +14,8 @@ function Page() {
     if (Reg.length === 10) {
       SetLoader(true);
       try {
+        // https://student-registration-ashen.vercel.app
+        // http://localhost:3000
         const resp = await axios.get(
           `https://student-registration-ashen.vercel.app/getUserInfo/${Reg.toUpperCase()}`
         );

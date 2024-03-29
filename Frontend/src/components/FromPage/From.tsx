@@ -69,7 +69,9 @@ function Form() {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoaderShow(true);
     try {
-      if (isNewUser) {      
+      if (isNewUser) {
+        //  https://student-registration-ashen.vercel.app
+        // http://localhost:3000
         const response = await axios.post(
           "https://student-registration-ashen.vercel.app/AddStudentInfo",
           {
@@ -87,18 +89,22 @@ function Form() {
           Navigation("/Response");
         }
       } else {
-          
-        const Resp = await axios.put("https://student-registration-ashen.vercel.app/updateTheInfo", {
-          email: data.email,
-          fatherName: data.fatherName,
-          fullName: data.fullName,
-          motherName: data.motherName,
-          phoneNumber: data.phoneNumber,
-          registerNo: data.registerNo.toUpperCase(),
-          gender: data.gender,
-          Department: data.department,
-        });
-        if (Resp.statusText === "OK") {
+        // https://student-registration-ashen.vercel.app
+        // http://localhost:3000
+        const Resp = await axios.put(
+          "https://student-registration-ashen.vercel.app/updateTheInfo",
+          {
+            email: data.email,
+            fatherName: data.fatherName,
+            fullName: data.fullName,
+            motherName: data.motherName,
+            phoneNumber: data.phoneNumber,
+            registerNo: data.registerNo.toUpperCase(),
+            gender: data.gender,
+            Department: data.department,
+          }
+        );
+        if (Resp.status === 200) {
           Navigation("/Response", { state: { show: Resp.data } });
         }
       }
@@ -215,7 +221,7 @@ function Form() {
                   required: "Please select your department",
                 })}
                 onChange={(e) => {
-                  setValue("department", e.target.value)
+                  setValue("department", e.target.value);
                 }}
                 defaultValue={Details?.department}
               >
@@ -234,9 +240,7 @@ function Form() {
                 <option value="Electronics and Communication Engineering">
                   Electronics and Communication Engineering
                 </option>
-                <option value="Civil engineering">
-                  Civil engineering
-                </option>
+                <option value="Civil engineering">Civil engineering</option>
                 <option value="Computer Science and Technology">
                   Computer Science and Technology
                 </option>
