@@ -11,14 +11,15 @@ function Page() {
 
   const HandleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (Reg.length === 10) {
+    if (Reg.length === 10 && Reg[2].toUpperCase() == "K" && Reg[3] == "6") {
       SetLoader(true);
       try {
         // https://student-registration-ashen.vercel.app
         // http://localhost:3000
         const resp = await axios.get(
-          `https://student-registration-ashen.vercel.app/getUserInfo/${Reg.toUpperCase()}`
+          `https://student-registration-ashen.vercel.app/firebase/getUserInfo/${Reg.toUpperCase()}`
         );
+        console.log(resp.data[0].Aadhaar_No);
         if (resp.data !== "new user") {
           navigate(`/student_details/${Reg}`, {
             state: { AboutUserType: "old" },
@@ -75,7 +76,7 @@ function Page() {
           </form>
           {Loader && (
             <button className="border-2 loader_btn bg-blue-400 text-white p-2 flex justify-center">
-              <div className=" Loader_animate"></div>
+              <div className=" Loader_animate" />
             </button>
           )}
         </div>

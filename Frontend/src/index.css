@@ -2,27 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-.loader_btn{
-    cursor: not-allowed;
-    border: none;
+.loader_btn {
+  cursor: not-allowed;
+  border: none;
 }
-.Loader_animate{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid white;
-    border-bottom-color: transparent;
-    animation: Loading 1s linear infinite;
+.Loader_animate {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  border-bottom-color: transparent;
+  animation: Loading 1s linear infinite;
 }
 @keyframes Loading {
-    0%{
-        transform:rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-    
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.Error_message{
-    color: red;
+.Error_message {
+  color: red;
+}
+
+.gear{
+  animation: Rotate 2s infinite;
+}
+
+@keyframes Rotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@media print {
+  .print-content {
+    /* Define print styles here */
+    font-size: 12pt;
+    line-height: 1.5;
+    /* Add any other print-specific styles */
+  }
+}
+
+.t1 {
+  animation: Breathing 2s linear infinite;
+}
+.t2 {
+  animation: Breathing 2s linear 1s infinite;
+}
+
+
+@keyframes Breathing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
