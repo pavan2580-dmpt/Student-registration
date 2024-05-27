@@ -21,7 +21,7 @@ function FinalPage() {
   function downloadFile() {
     const link = document.createElement("a");
     link.href = val;
-    link.setAttribute("download", `${fileName}.docx`); // Set the filename
+    link.setAttribute("download", `${fileName}.pdf`); // Set the filename
 
     document.body.appendChild(link);
     link.click();

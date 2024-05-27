@@ -13,11 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@pspdfkit/nodejs": "^0.0.5",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
     "docx-pdf": "^0.0.1",
     "docx-to-pdf": "^1.1.0",
+    "docx4js": "^3.2.20",
     "docxtemplater": "^3.46.2",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",

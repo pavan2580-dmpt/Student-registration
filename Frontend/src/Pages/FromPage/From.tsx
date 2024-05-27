@@ -24,6 +24,7 @@ function Form() {
   const [isNewUser, setIsNewUser] = useState<boolean>(true);
   const setStudent = location.state?.AboutUserType;
   const [Details, setDetails] = useState<InfoData[]>([]);
+  const [selectedClub1, setSelectedClub1] = useState<string>("");
 
   useEffect(() => {
     if (setStudent === "old") {
@@ -70,9 +71,11 @@ function Form() {
       setValue("District", convertedValue);
       setValue("Aadhar", Details[0].Aadhaar_No);
       setValue("Club1", Details[0].RED_ANTS_Club1);
+      setValue("Club2",Details[0].RED_ANTS_Club2)
       setValue("Credits", Details[0].Credits);
       setValue("Passed", Details[0].Passed);
       setValue("Failed", Details[0].Failed);
+      setSelectedClub1(Details[0].RED_ANTS_Club1);
     }
   }, [Details, setValue]);
 
@@ -93,6 +96,14 @@ function Form() {
     </option>
   ));
 
+  const Club2Options = Clubs.filter((club) => club !== selectedClub1).map(
+    (opt, idx) => (
+      <option value={opt} key={idx}>
+        {opt}
+      </option>
+    )
+  );
+
   const BranchsOpts = Branches.map((opt, idx) => (
     <option value={opt} key={idx}>
       {opt}
@@ -105,7 +116,7 @@ function Form() {
         //  https://student-registration-ashen.vercel.app
         // http://localhost:3000
         const response = await axios.post(
-          "https://student-registration-ashen.vercel.app/firebse/newUser",
+          "http://localhost:3000/firebse/newUser",
           {
             sem_no: data.sem_no,
             email: data.email,
@@ -130,6 +141,7 @@ function Form() {
             District: data.District,
             Aadhar: data.Aadhar,
             Club1: data.Club1,
+            Club2:data.Club2,
             Group: data.Group,
             Credits: data.Credits,
             Passed: data.Passed,
@@ -143,7 +155,7 @@ function Form() {
         // https://student-registration-ashen.vercel.app
         // http://localhost:3000/firebase/update
         const Resp = await axios.put(
-          "https://student-registration-ashen.vercel.app/firebase/update",
+          "http://localhost:3000/firebase/update",
           {
             DocumentId: Details[0].id,
             sem_no: data.sem_no,
@@ -169,6 +181,7 @@ function Form() {
             District_Name: data.District,
             Aadhaar_No: data.Aadhar,
             RED_ANTS_Club1: data.Club1,
+            RED_ANTS_Club2:data.Club2,
             Blood_Group: data.Group,
             Failed: data.Failed,
             Passed: data.Passed,
@@ -177,7 +190,7 @@ function Form() {
           { responseType: "blob" }
         );
         if (Resp.status === 200) {
-          const url = window.URL.createObjectURL(new Blob([Resp.data]));
+          const url = window.URL.createObjectURL(Resp.data);          
           Navigation("/Response", {
             state: {
               show: url,
@@ -617,6 +630,7 @@ function Form() {
                   })}
                   onChange={(e) => {
                     setValue("Club1", e.target.value);
+                    setSelectedClub1(e.target.value);
                   }}
                   defaultValue={Details[0]?.RED_ANTS_Club1}
                 >
@@ -630,6 +644,35 @@ function Form() {
                   <p className="Error_message">{errors.Club1.message}</p>
                 )}
               </div>
+                {/*------------------------------- Red Ants Clud -2 --------------------------- */}
+
+   
+                <div className="Club2">
+                <label htmlFor="RED ANTS Club2">RED ANTS Club2 : </label>
+                <br />
+                <select
+                  id="RED ANTS Club2"
+                  className="w-[90%] h-[45px] border-2 border-black"
+                  {...register("Club2", {
+                    required: "Please select your RED ANTS Club2",
+                  })}
+                  onChange={(e) => {
+                    setValue("Club2", e.target.value);
+                  }}
+                  defaultValue={Details[0]?.RED_ANTS_Club2}
+                >
+                  <option value="">
+                    ----------------select----------------
+                  </option>
+                  {Club2Options}
+                </select>
+
+                {errors.Club2 && (
+                  <p className="Error_message">{errors.Club2.message}</p>
+                )}
+              </div>
+              {/*------------------------------ club - 2 ending------------------------------------------- */}
+
               <div className="JVD">
                 <p className="text-xl font-semibold">JVD Applicable :</p>
                 <div className="flex gap-5 ml-6 text-xl">

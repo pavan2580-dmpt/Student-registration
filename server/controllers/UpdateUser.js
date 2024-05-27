@@ -1,4 +1,6 @@
 const { fs, path, db, Docxtemplater, PizZip } = require("../config/Imports.js");
+const libre = require("libreoffice-convert");
+libre.convertAsync = require("util").promisify(libre.convert);
 
 const UpdateUser = async (req, res) => {
   try {
@@ -182,6 +184,36 @@ const UpdateUser = async (req, res) => {
           const docxFileName = `${folderName}/${newData.rno}.docx`;
           fs.writeFileSync(docxFileName, updatedContent);
 
+          // convert to pdf code start
+
+          async function main() {
+            const ext = ".pdf";
+            const inputPath = path.join(
+              "Student_Register_Forms",
+              `${newData.rno}.docx`
+            );
+            console.log(inputPath);
+
+            const outputPath = path.join(
+              "Student_Register_Forms",
+              `${newData.rno}${ext}`
+            );
+            console.log(outputPath);
+            // Read file
+            const docxBuf = await fs.readFile(inputPath);
+
+            // Convert it to pdf format with undefined filter (see Libreoffice docs about filter)
+            let pdfBuf = await libre.convertAsync(docxBuf, ext, undefined);
+
+            // Here in done you have pdf file which you can save or transfer in another stream
+            await fs.writeFile(outputPath, pdfBuf);
+          }
+
+          main().catch(function (err) {
+            console.log(`Error converting file: ${err}`);
+          });
+          // pdf code end
+
           //  response start
           const filePath = path.join(
             "Student_Register_Forms",
@@ -190,17 +222,17 @@ const UpdateUser = async (req, res) => {
 
           // Check if the file exists
           if (fs.existsSync(filePath)) {
-            // Read the file and send it as the response
-            const file = fs.createReadStream(filePath);
-            res.setHeader(
-              "Content-Type",
-              "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            );
-            res.setHeader(
-              "Content-Disposition",
-              `attachment; filename=${newData.rno}.docx`
-            );
-            file.pipe(res);
+             // Read the file and send it as the response
+          //   const file = fs.createReadStream(filePath);
+          //   res.setHeader(
+          //     "Content-Type",
+          //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          //   );
+          //   res.setHeader(
+          //     "Content-Disposition",
+          //     `attachment; filename=${newData.rno}.docx`
+          //   );
+          //   file.pipe(res);
           } else {
             console.log("file path error ....");
           }

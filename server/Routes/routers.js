@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const {AddUser} = require("../controllers/NewUser")
-const {GetUserDetails} = require("../controllers/SingleUser")
-const {UpdateUser} = require("../controllers/UpdateUser")
-const {Uplaod_CSV_TO_FireStore} = require("../controllers/UploadCSV_TO_FireStore")
+const { AddUser } = require("../controllers/NewUser");
+const { GetUserDetails } = require("../controllers/SingleUser");
+const { Update__Users } = require("../controllers/update__Users");
+const {
+  Uplaod_CSV_TO_FireStore,
+} = require("../controllers/UploadCSV_TO_FireStore");
 
 // @get route
 // route for getting the student details using id
@@ -15,7 +17,7 @@ router.route("/firebase/getUserInfo/:Reg").get(GetUserDetails);
 // @put to fire-store
 // Creates a dox file for registration form using the details
 // and updates then in the fire store
-router.route("/firebase/update").put(UpdateUser);
+router.route("/firebase/update").put(Update__Users);
 
 // ----------------------------------------------------------------------------------------
 //@put to fire-store
@@ -202,14 +204,9 @@ router.route("/firebase/update").put(UpdateUser);
 // uplaod data to fire-store using execelsheets or csv file
 router.route("/upload").get(Uplaod_CSV_TO_FireStore);
 
-
-
 // @post route for adding user user to fire store
 // and creates a registration from docx file and sends to front-end
 // @public post route
-router.route("/firebse/newUser").post(AddUser)
-
-
-
+router.route("/firebse/newUser").post(AddUser);
 
 module.exports = router;

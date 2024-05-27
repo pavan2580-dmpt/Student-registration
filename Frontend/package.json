@@ -12,6 +12,7 @@
   "dependencies": {
     "@cyntler/react-doc-viewer": "^1.15.0",
     "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
     "firebase": "^10.10.0",
     "js-cookie": "^3.0.5",
     "js-cookies": "^1.0.4",

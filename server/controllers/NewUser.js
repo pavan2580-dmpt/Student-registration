@@ -28,6 +28,7 @@ const AddUser = async (req, res) => {
       District_Name,
       Aadhaar_No,
       RED_ANTS_Club1,
+      RED_ANTS_Club2,
       Blood_Group,
       Gender,
     } = req.body;
@@ -58,6 +59,7 @@ const AddUser = async (req, res) => {
       !District_Name ||
       !Aadhaar_No ||
       !RED_ANTS_Club1 ||
+      !RED_ANTS_Club2||
       !Blood_Group
     ) {
       res.status(400).send("missing data");
@@ -106,7 +108,7 @@ const AddUser = async (req, res) => {
         JVD_Applicable: JVD_Applicable,
         Hostel: Hostel,
         RED_ANTS_Club1: RED_ANTS_Club1,
-        RED_ANTS_Club2: "1",
+        RED_ANTS_Club2: RED_ANTS_Club2,
         Passed: Passed,
         Failed: Failed,
         Credits: Credits,
@@ -144,7 +146,7 @@ const AddUser = async (req, res) => {
           pass: Passed,
           fail: Failed,
           hobby1: RED_ANTS_Club1,
-          hobby2: RED_ANTS_Club1,
+          hobby2: RED_ANTS_Club2,
           credits: Credits,
           sc1: "SubjectCode1",
           sn1: "SubjectName1",
