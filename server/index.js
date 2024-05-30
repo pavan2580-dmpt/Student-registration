@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://collage-test-project-6chv.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
