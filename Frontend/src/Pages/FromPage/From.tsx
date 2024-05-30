@@ -71,7 +71,7 @@ function Form() {
       setValue("District", convertedValue);
       setValue("Aadhar", Details[0].Aadhaar_No);
       setValue("Club1", Details[0].RED_ANTS_Club1);
-      setValue("Club2",Details[0].RED_ANTS_Club2)
+      setValue("Club2", Details[0].RED_ANTS_Club2);
       setValue("Credits", Details[0].Credits);
       setValue("Passed", Details[0].Passed);
       setValue("Failed", Details[0].Failed);
@@ -116,7 +116,7 @@ function Form() {
         //  https://student-registration-ashen.vercel.app
         // http://localhost:3000
         const response = await axios.post(
-          "http://localhost:3000/firebse/newUser",
+          "https://student-registration-ashen.vercel.app/firebse/newUser",
           {
             sem_no: data.sem_no,
             email: data.email,
@@ -141,7 +141,7 @@ function Form() {
             District: data.District,
             Aadhar: data.Aadhar,
             Club1: data.Club1,
-            Club2:data.Club2,
+            Club2: data.Club2,
             Group: data.Group,
             Credits: data.Credits,
             Passed: data.Passed,
@@ -155,7 +155,7 @@ function Form() {
         // https://student-registration-ashen.vercel.app
         // http://localhost:3000/firebase/update
         const Resp = await axios.put(
-          "http://localhost:3000/firebase/update",
+          "https://student-registration-ashen.vercel.app/firebase/update",
           {
             DocumentId: Details[0].id,
             sem_no: data.sem_no,
@@ -181,7 +181,7 @@ function Form() {
             District_Name: data.District,
             Aadhaar_No: data.Aadhar,
             RED_ANTS_Club1: data.Club1,
-            RED_ANTS_Club2:data.Club2,
+            RED_ANTS_Club2: data.Club2,
             Blood_Group: data.Group,
             Failed: data.Failed,
             Passed: data.Passed,
@@ -190,7 +190,7 @@ function Form() {
           { responseType: "blob" }
         );
         if (Resp.status === 200) {
-          const url = window.URL.createObjectURL(Resp.data);          
+          const url = window.URL.createObjectURL(Resp.data);
           Navigation("/Response", {
             state: {
               show: url,
@@ -644,10 +644,9 @@ function Form() {
                   <p className="Error_message">{errors.Club1.message}</p>
                 )}
               </div>
-                {/*------------------------------- Red Ants Clud -2 --------------------------- */}
+              {/*------------------------------- Red Ants Clud -2 --------------------------- */}
 
-   
-                <div className="Club2">
+              <div className="Club2">
                 <label htmlFor="RED ANTS Club2">RED ANTS Club2 : </label>
                 <br />
                 <select

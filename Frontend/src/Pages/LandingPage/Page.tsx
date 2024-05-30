@@ -17,7 +17,7 @@ function Page() {
         // https://student-registration-ashen.vercel.app
         // http://localhost:3000
         const resp = await axios.get(
-          `http://localhost:3000/firebase/getUserInfo/${Reg.toUpperCase()}`
+          `https://student-registration-ashen.vercel.app/firebase/getUserInfo/${Reg.toUpperCase()}`
         );
         console.log(resp.data[0].Aadhaar_No);
         if (resp.data !== "new user") {
