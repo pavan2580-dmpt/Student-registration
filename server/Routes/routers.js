@@ -11,7 +11,26 @@ const {
 // @get route
 // route for getting the student details using id
 // if exists sends  res as "old user" ,else sends res as "new user".
-router.route("/firebase/getUserInfo/:Reg").get(GetUserDetails);
+router.route("/firebase/getUserInfo/:Reg").get(async (req, res) => {
+  const Reg = req.params.Reg;
+  const snapshot = await db
+    .collection("StudentSemDetails")
+    .where("Registration_No", "==", Reg)
+    .get();
+  if (snapshot.empty) {
+    res.send("new user");
+    console.log("new");
+  } else {
+    data = [];
+    snapshot.forEach((doc) => {
+      data.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    res.send(data);
+  }
+});
 
 // -----------------------------------------------------------------------------------
 // @put to fire-store
