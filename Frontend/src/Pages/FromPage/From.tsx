@@ -113,10 +113,10 @@ function Form() {
     setLoaderShow(true);
     try {
       if (isNewUser) {
-        //  https://student-registration-ashen.vercel.app
+        //  https://student-registration-nxzu.onrender.com
         // http://localhost:3000
         const response = await axios.post(
-          "https://student-registration-ashen.vercel.app/firebse/newUser",
+          "https://student-registration-nxzu.onrender.com/firebse/newUser",
           {
             sem_no: data.sem_no,
             email: data.email,
@@ -152,10 +152,10 @@ function Form() {
           Navigation("/Response");
         }
       } else {
-        // https://student-registration-ashen.vercel.app
+        // https://student-registration-nxzu.onrender.com
         // http://localhost:3000/firebase/update
         const Resp = await axios.put(
-          "https://student-registration-ashen.vercel.app/firebase/update",
+          "https://student-registration-nxzu.onrender.com/firebase/update",
           {
             DocumentId: Details[0].id,
             sem_no: data.sem_no,

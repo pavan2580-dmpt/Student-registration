@@ -14,10 +14,11 @@ function Page() {
     if (Reg.length === 10 && Reg[2].toUpperCase() == "K" && Reg[3] == "6") {
       SetLoader(true);
       try {
-        // https://student-registration-ashen.vercel.app
+        // https://student-registration-nxzu.onrender.com
         // http://localhost:3000
+
         const resp = await axios.get(
-          `https://student-registration-ashen.vercel.app/firebase/getUserInfo/${Reg.toUpperCase()}`
+          `https://student-registration-nxzu.onrender.com/firebase/getUserInfo/${Reg.toUpperCase()}`
         );
         console.log(resp.data[0].Aadhaar_No);
         if (resp.data !== "new user") {
