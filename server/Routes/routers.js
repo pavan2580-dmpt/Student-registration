@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { AddUser } = require("../controllers/NewUser");
 const { GetUserDetails } = require("../controllers/SingleUser");
+const { db } = require("../config/Imports.js");
 const { Update__Users } = require("../controllers/update__Users");
 const {
   Uplaod_CSV_TO_FireStore,
