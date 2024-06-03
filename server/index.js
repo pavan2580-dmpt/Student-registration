@@ -10,8 +10,19 @@ app.use(
   cors({
     origin: "https://collage-test-project-6chv.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders:
-      "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Content-Type-Options",
+      "Accept",
+      "X-Requested-With",
+      "Origin",
+      "Access-Control-Request-Method",
+      "Access-Control-Request-Headers",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Allow-Headers",
+    ],
   })
 );
 
