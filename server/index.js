@@ -5,10 +5,9 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 app.use(bodyParser.json());
-// https://collage-test-project-6chv.vercel.app
 app.use(
   cors({
-    origin: "*",
+    origin: "https://collage-test-project-6chv.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
