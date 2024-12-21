@@ -18,7 +18,7 @@ function Page() {
         // http://localhost:3000
 
         const resp = await axios.get(
-          `https://student-registration-nxzu.onrender.com/firebase/getUserInfo/${Reg.toUpperCase()}`
+          `https://student-registration-xsif.vercel.app/firebase/getUserInfo/${Reg.toUpperCase()}`
         );
         console.log(resp.data[0].Aadhaar_No);
         if (resp.data !== "new user") {

@@ -116,7 +116,7 @@ function Form() {
         //  https://student-registration-nxzu.onrender.com
         // http://localhost:3000
         const response = await axios.post(
-          "https://student-registration-nxzu.onrender.com/firebse/newUser",
+          "https://student-registration-xsif.vercel.app/firebse/newUser",
           {
             sem_no: data.sem_no,
             email: data.email,
@@ -155,7 +155,7 @@ function Form() {
         // https://student-registration-nxzu.onrender.com
         // http://localhost:3000/firebase/update
         const Resp = await axios.put(
-          "https://student-registration-nxzu.onrender.com/firebase/update",
+          "https://student-registration-xsif.vercel.app//firebase/update",
           {
             DocumentId: Details[0].id,
             sem_no: data.sem_no,
